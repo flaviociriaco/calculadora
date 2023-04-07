@@ -10,12 +10,47 @@ class calculator {
   }
 
   addDigit(digit) {
+    if (digit === "." && this.currentOperationText.innerText.includes(".")) {
+      return;
+    }
+
     this.currentOperation = digit;
     this.updateScreen();
   }
 
-  updateScreen() {
-    this.currentOperationText.innerText += this.currentOperation;
+  processOperation(operation) {
+    let operationValue;
+    const previous = +this.previousOperationText.innerText.split(" ")[0];
+    const current = +this.currentOperationText.innerText;
+
+    switch (operation) {
+      case "+":
+        operationValue = previous + current;
+        this.updateScreen(operationValue, operation, current, previous);
+        break;
+      default:
+        return;
+    }
+  }
+
+  updateScreen(
+    operationValue = null,
+    operation = null,
+    current = null,
+    previous = null
+  ) {
+    console.log(operationValue, operation, current, previous);
+
+    if (operationValue === null) {
+      this.currentOperationText.innerText += this.currentOperation;
+    } else {
+      if (previous === 0) {
+        operationValue = current;
+      }
+
+      this.previousOperationText.innerText = `${operationValue} ${operation}`;
+      this.currentOperationText.innerText = "";
+    }
   }
 }
 
@@ -28,7 +63,7 @@ buttons.forEach((btn) => {
     if (+value >= 0 || value === ".") {
       calc.addDigit(value);
     } else {
-      console.log("Op: " + value);
+      calc.processOperation(value);
     }
   });
 });
