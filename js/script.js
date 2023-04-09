@@ -19,7 +19,7 @@ class calculator {
   }
 
   processOperation(operation) {
-    if (this.currentOperation.innerText === "") {
+    if (this.currentOperation.innerText === "" && operation !== "C") {
       if (this.previousOperationText.innerText !== "") {
         this.changeOperation(operation);
       }
@@ -49,6 +49,12 @@ class calculator {
         break;
       case "DEL":
         this.processDelOperator();
+        break;
+      case "CE":
+        this.processClearCurrentOperation();
+        break;
+      case "C":
+        this.processClearOperation();
         break;
       default:
         return;
@@ -89,6 +95,15 @@ class calculator {
   processDelOperator() {
     this.currentOperationText.innerText =
       this.currentOperationText.innerText.slice(0, -1);
+  }
+
+  processClearCurrentOperation() {
+    this.currentOperationText.innerText = "";
+  }
+
+  processClearOperation() {
+    this.currentOperationText.innerText = "";
+    this.previousOperationText.innerText = "";
   }
 }
 
