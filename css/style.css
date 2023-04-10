@@ -30,6 +30,8 @@ body {
 
 #operations {
   text-align: right;
+  border: 1px solid #999;
+  margin-bottom: 5px;
 }
 
 #previous-operation,

@@ -56,6 +56,9 @@ class calculator {
       case "C":
         this.processClearOperation();
         break;
+      case "=":
+        this.processEqualsOperation();
+        break;
       default:
         return;
     }
@@ -104,6 +107,11 @@ class calculator {
   processClearOperation() {
     this.currentOperationText.innerText = "";
     this.previousOperationText.innerText = "";
+  }
+
+  processEqualsOperation() {
+    const operation = previousOperationText.innerHTML.split(" ")[1];
+    this.processOperation(operation);
   }
 }
 
