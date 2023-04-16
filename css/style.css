@@ -53,6 +53,14 @@ body {
   gap: 3px;
 }
 
+#buttons-container .signal {
+  background-color: #ffff00;
+}
+
+#buttons-container .reset {
+  background-color: #ff0000;
+}
+
 #buttons-container button {
     border: 1px solid transparent;
     border-radius: 0;
@@ -67,7 +75,7 @@ body {
 }
 
 #buttons-container button:hover {
-  background-color: #bababa;
+  background-color: #008000;
   border-color: #999;
 }
 
@@ -77,5 +85,5 @@ body {
 }
 
 #buttons-container #equal-btn:hover {
-  background-color: #3a91d8;
+  background-color: #008000;
 }
